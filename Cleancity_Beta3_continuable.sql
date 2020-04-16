@@ -215,10 +215,49 @@ select
 --5) precio de materia prima:
 select nombreMaterial, precio_KG from material;
 
-/**/
-    
+/*-----------------Consultas con rangos de fecha (Ulises)-----------------*/
 
---Inner Joins
+--1) comentarios hechos por un cliente en un periodo de tiempo:
+select 
+    cliente.id_cliente,
+    comentario
+    FROM
+    cliente
+    inner join comentario on comentario.id_cliente = cliente.id_cliente where fecha between 09/26/2018 and 09/26/2019;
+
+--2) comentarios de productos en un cierto tiempo:
+select
+    producto.id_producto
+    comentario
+    FROM
+    producto
+    inner join comentario on comentario.id_producto = porducto.id_producto where fecha between 12/10/2018 and 12/10/2019;
+
+/*-----------------Consultas con rangos de fecha (Marco)-----------------*/ 
+
+/*------------------Consultas para reportes con parametros (Marco)-------------------*/
+
+--selects
+
+select * from cometarios;
+select * from carrito;
+select * from detalle_Transaccion;
+select * from transaccion;
+select * from proveedor;
+select * from empleado;
+select * from producto;
+select * from cliente;
+select * from detalle_material
+select * from material;
+select * from departamento;
+select * from tipo_Producto;
+select * from tipo_Transaccion;
+select * from tipo_Empleado;
+select * from estado_Empleado;
+select * from metodo_Pago;
+select * from genero;
+
+--Inner Join (Ejemplo)
 
  select
  	usuario.id_usuario,
