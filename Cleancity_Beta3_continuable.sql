@@ -235,7 +235,7 @@ select
 
 /*-----------------Consultas con rangos de fecha (Marco)-----------------*/ 
 
-/*------------------Consultas para reportes con parametros (Marco)-------------------*/
+/*------------Consultas para reportes con parametros (Marco)-------------*/
 
 --selects
 
