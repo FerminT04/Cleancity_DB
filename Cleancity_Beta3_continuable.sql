@@ -234,8 +234,43 @@ select
     inner join comentario on comentario.id_producto = porducto.id_producto where fecha between 12/10/2018 and 12/10/2019;
 
 /*-----------------Consultas con rangos de fecha (Marco)-----------------*/ 
+select id_transaccion, nombre_cliente, fecha, montoTotal
+from transaccion
+inner join nombre_cliente on cliente.id_cliente = transaccion.id_cliente
+where fecha between '01/01/2000' and '31/12/2019'
+
+select id_transaccion, nombre_empresa, fecha, montoTotal
+from transaccion
+inner join nombre_empresa on proveedor.id_proveedor = transaccion.id_proveedor
+where fecha between '01/01/2010' and '02/04/2020'
 
 /*------------Consultas para reportes con parametros (Marco)-------------*/
+select nombre_cliente, telefono, DUI, direccion
+from cliente
+inner join departamento on departamento.id_departamento = cliente.id_departamento
+where departamento = 'San Salvador';
+
+select nombre_producto, existencia, precio, tipoEmpleado, estadoEmpleado, tipoProducto
+from producto
+inner join tipoProducto on tipo_Producto.id_tipoProducto = producto.id_tipoProducto
+where existencia <= 30;
+
+select nombre_empleado, correo, DUI
+from ((empleado
+inner join tipoEmpleado on tipo_Empleado.id_Empleado = empleado.id_tipoEmpleado)
+inner join estadoEmpleado on estado_Empleado.id_estadoEmpleado = empleado.id_estadoEmpleado)
+where tipoEmpleado = 'Gerente' and estadoEmpleado = 'Activo';
+
+select id_transaccion, fecha, montoTotal, nombre_cliente, tipoTransaccion
+from ((transaccion
+inner join nombre_cliente on cliente.id_cliente = transaccion.id_cliente)
+inner join tipoTransaccion on tipo_Transaccion.id_tipoTransaccion = transaccion.id_tipoTransaccion)
+where tipoTransaccion = 'Venta';
+
+select comentario, puntuacion, nombre_producto
+from comentarios
+inner join nombre_producto on producto.id_producto = comentarios.id_producto
+where puntuacion between 2 and 4;
 
 --selects
 
