@@ -157,6 +157,7 @@ create table comentarios(
     puntuacion numeric(1),
     id_cliente integer,
     id_producto integer,
+    fecha timestamptz DEFAULT Now()
 
     foreign key (id_cliente) references cliente (id_cliente),
     foreign key (id_producto) references producto (id_producto)
@@ -181,6 +182,41 @@ select * from tipo_Empleado;
 select * from estado_Empleado;
 select * from metodo_Pago;
 select * from genero;
+
+/*------------------Consultas para gráficos (Ulises)--------------------*/
+
+--1) Clientes por departamento:
+select 
+    cliente.id_departamento,
+    departamento
+    FROM
+    cliente
+    inner join departamento on departamento.id_departamento = cliente.id_departamento;
+
+--2) Costo de envio por departamento:
+select departamento, costoEnvio from departamento;
+
+--3) transacciones por empleado:
+select
+    empleado.id_empleado,
+    montoTotal
+    FROM
+    empleado
+    inner join transaccion on transaccion.id_empleado = empleado.id_empleado;
+
+--4) transacciones por empleado en un periodo de tiempo especifico:
+select
+    empleado.id_empleado,
+    montoTotal
+    FROM
+    empleado
+    inner join transaccion on transaccion.id_empleado = empleado.id_empleado where fecha between 02/10/2015 and 02/10/2015;
+
+--5) precio de materia prima:
+select nombreMaterial, precio_KG from material;
+
+/**/
+    
 
 --Inner Joins
 
